@@ -5,6 +5,7 @@ import ActionMenu from '../../components/shared/ActionMenu';
 import { fetchContact, initialLoad } from '../../services/api-service';
 import { normalizeCompanyData, normalizeContactData } from '../../services/dto';
 import CardWithImages from '../../components/shared/CardWithImages';
+import { savedMockData } from '../../data';
 
 const Organizations: React.FC = () => {
   const [company, setCompany] = useState<Record<string, any> | null>(null);
@@ -12,14 +13,20 @@ const Organizations: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      const companyData = await initialLoad();
-      const contactData = await fetchContact('16');
+      try {
+        const companyData = await initialLoad();
+        const contactData = await fetchContact('16');
 
-      const companyDataNormilized = normalizeCompanyData(companyData);
-      const contactDataNormalized = normalizeContactData(contactData)
+        const companyDataNormilized = normalizeCompanyData(companyData);
+        const contactDataNormalized = normalizeContactData(contactData)
 
-      setCompany(companyDataNormilized);
-      setContact(contactDataNormalized)
+        setCompany(companyDataNormilized);
+        setContact(contactDataNormalized)
+      } catch (error) {
+        console.log('API not works((');
+        const companyDataNormilized = normalizeCompanyData(savedMockData);
+        setCompany(companyDataNormilized);
+      }
     })();
   }, []);
 
