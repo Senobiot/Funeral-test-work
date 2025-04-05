@@ -2,106 +2,86 @@ import React from "react";
 import {
   Box,
   CssBaseline,
+  Divider,
   Drawer,
   List,
   ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
-import { Home, People, Business, Settings, PlayArrow, NotInterested, Search, BusinessCenter, Park } from "@mui/icons-material";
-import { navTree } from '../../configs/navigationConfig';
 
+} from "@mui/material";
+
+import { navTree } from '../../configs/navigationConfig';
+import { MenuIconButton, RegularIconButton, OutlinedIconButton } from '../shared/buttons';
+import { SubtitleText, TransparentText, RegularText } from '../shared/Text';
 
 const Sidebar: React.FC = () => {
   return (
-    <Box sx={{ display: "flex", flexDirection: 'row' }}>
+    <Box sx={{ display: "flex", alignItems: 'center' }}>
       <CssBaseline />
       <Drawer
         sx={{
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
+            flexDirection: 'row'
           },
         }}
         variant="permanent"
         anchor="left"
       >
-        <Box sx={{ textAlign: "center", backgroundColor: '#3B3B3B', color: 'white', height: '100vh', width: 48 }}>
-          <List>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <Park />
-                </ListItemIcon>
-                <ListItemText primary="Tree Icon" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <BusinessCenter />
-                </ListItemIcon>
-                <ListItemText primary="Briefcase Icon" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <Search />
-                </ListItemIcon>
-                <ListItemText primary="Magnifying Glass Icon" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <NotInterested />
-                </ListItemIcon>
-                <ListItemText primary="Circular Icon with Line" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <Settings />
-                </ListItemIcon>
-                <ListItemText primary="Gear Icon" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <PlayArrow />
-                </ListItemIcon>
-                <ListItemText primary="Play Icon" />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </Box>
-        <Box>
-          <Box sx={{ textAlign: "center", mt: 2, width: 250 }}>
-            <Typography variant="h6">Oak Tree Cemetery</Typography>
-            <Typography variant="caption">Process Manager</Typography>
+        <Box sx={{
+          backgroundColor: '#3B3B3B',
+          color: 'white',
+          height: '100vh',
+          width: 48,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '20px 0'
+        }}>
+          <Box>
+            <img src='/Logo.svg' alt="icon" />
+            <List>
+              <ListItem disablePadding>
+                <MenuIconButton src='/Company.svg' />
+              </ListItem>
+              <ListItem disablePadding>
+                <MenuIconButton src='/MagnifyingGlass.svg' />
+              </ListItem>
+            </List>
           </Box>
-          <List>
+          <Box>
+            <List>
+              <ListItem disablePadding>
+                <MenuIconButton src='/Settings.svg' />
+              </ListItem>
+              <ListItem disablePadding>
+                <MenuIconButton src='/SignOut.svg' />
+              </ListItem>
+            </List>
+          </Box>
+        </Box>
+        <Box sx={{ margin: 2.5 }} >
+          <Box sx={{ width: 250 }}>
+            <SubtitleText text='Oak Tree Cemetery' />
+            <RegularText textFz='11px' text='Process Manager' />
+            <Box mb={2.5}></Box>
+            <Divider textAlign="left" />
+          </Box>
+          <List sx={{ textAlign: "center", width: 250, mt: 2.5 }}>
             {navTree.map((button, index) =>
-              <ListItem key={index} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <Business />
-                  </ListItemIcon>
-                  <ListItemText primary={button.title} />
-                </ListItemButton>
+              <ListItem sx={{ mb: 1.5 }} key={index} disablePadding>
+                {button.isActive ?
+                  <RegularIconButton src={button.src} text={button.title} /> :
+                  <OutlinedIconButton src={button.src} text={button.title} />}
               </ListItem>)}
           </List>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ textAlign: "center", mb: 2 }}>
-            <Typography variant="caption">All Funeral Services © 2015-2025</Typography>
+            <TransparentText text='All Funeral Services © 2015-2025' />
           </Box>
         </Box>
-      </Drawer>
-    </Box>
+      </Drawer >
+    </Box >
   );
 };
 
