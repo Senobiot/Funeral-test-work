@@ -10,14 +10,14 @@ const Organizations: React.FC = () => {
   const [company, setCompany] = useState<Record<string, any> | null>(null);
   const [contact, setContact] = useState<Record<string, any> | null>(null);
 
-
   useEffect(() => {
     (async () => {
       const companyData = await initialLoad();
       const contactData = await fetchContact('16');
-      console.log(contactData);
+
       const companyDataNormilized = normalizeCompanyData(companyData);
       const contactDataNormalized = normalizeContactData(contactData)
+
       setCompany(companyDataNormilized);
       setContact(contactDataNormalized)
     })();
@@ -32,9 +32,9 @@ const Organizations: React.FC = () => {
         alignContent="center"
         alignItems="center"
       >
-        <ActionMenu title={company.name} />
-        <CardCompanyDetails title="Company Details" content={company.companyDetailsData} />
-        <CardCompanyDetails title="Contacts" content={contact?.contactDetailsData} />
+        <ActionMenu title={company.name} id={company.id} />
+        <CardCompanyDetails id={company.id} title="Company Details" content={company.companyDetailsData} />
+        <CardCompanyDetails title="Contacts" content={contact?.contactDetailsData} id={company.id} />
         <CardWithImages title="Photos" photosArray={company.photos} companyId={company.id} />
       </Box>
     );

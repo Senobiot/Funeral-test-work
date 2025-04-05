@@ -12,8 +12,11 @@ import {
 import { navTree } from '../../configs/navigationConfig';
 import { MenuIconButton, RegularIconButton, OutlinedIconButton } from '../shared/buttons';
 import { SubtitleText, TransparentText, RegularText } from '../shared/Text';
+import { Link, useLocation } from 'react-router';
 
 const Sidebar: React.FC = () => {
+  const location = useLocation();
+  const currentRoute = location.pathname;
   return (
     <Box sx={{ display: "flex", alignItems: 'center' }}>
       <CssBaseline />
@@ -70,9 +73,14 @@ const Sidebar: React.FC = () => {
           <List sx={{ textAlign: "center", width: 250, mt: 2.5 }}>
             {navTree.map((button, index) =>
               <ListItem sx={{ mb: 1.5 }} key={index} disablePadding>
-                {button.isActive ?
-                  <RegularIconButton src={button.src} text={button.title} /> :
-                  <OutlinedIconButton src={button.src} text={button.title} />}
+                {button.path === currentRoute ?
+                  <Link to={button.path}><RegularIconButton src={button.src} text={button.title} />
+                  </Link>
+                  :
+                  <Link to={button.path}>
+                    <OutlinedIconButton src={button.src} text={button.title} />
+                  </Link>
+                }
               </ListItem>)}
           </List>
           <Box sx={{ flexGrow: 1 }} />

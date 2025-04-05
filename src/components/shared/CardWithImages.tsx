@@ -71,7 +71,7 @@ const CardWithImages: React.FC<PhotosComponentProps> = ({
           />
           <label htmlFor="file-upload">
           </label>
-          <OutlinedIconButton src={iconAddSrc} text='Add' width='73px' padding={1} iconMr={8} />
+          <OutlinedIconButton src={iconAddSrc} text='Add' width='73px' height={28} padding={1} iconMr={8} fz={11} fw={600} iconH={16} />
         </Box>
       </Box>
       <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'start' }}>

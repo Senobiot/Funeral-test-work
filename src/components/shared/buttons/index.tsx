@@ -51,6 +51,11 @@ type RegularIconButtonProps = {
   padding?: number,
   iconMr?: number,
   handleFileChange?: React.ChangeEventHandler<HTMLInputElement>,
+  fz?: number,
+  fw?: number,
+  noIcon?: boolean,
+  pR?: number,
+  pL?: number
 }
 
 export const RegularIconButton: React.FC<RegularIconButtonProps> = ({
@@ -61,6 +66,9 @@ export const RegularIconButton: React.FC<RegularIconButtonProps> = ({
   height = 40,
   width = 210,
   padding = 3,
+  noIcon,
+  pR,
+  pL
 }) => {
   return (
     <Button
@@ -80,6 +88,8 @@ export const RegularIconButton: React.FC<RegularIconButtonProps> = ({
         display: 'flex',
         justifyContent: 'flex-start',
         alignItems: 'center',
+        paddingLeft: pL,
+        paddingRight: pR,
 
         "&:hover": {
           backgroundColor: "#626262",
@@ -97,7 +107,7 @@ export const RegularIconButton: React.FC<RegularIconButtonProps> = ({
           margin: 0,
         },
       }}
-      startIcon={<img src={src} alt="icon" width={iconW} height={iconH} />}>
+      startIcon={!noIcon && <img src={src} alt="icon" width={iconW} height={iconH} />}>
       <Box sx={{
         display: 'flex',
         justifyContent: 'center',
@@ -119,6 +129,9 @@ export const OutlinedIconButton: React.FC<RegularIconButtonProps> = ({
   width = 210,
   padding = 3,
   iconMr = 0,
+  fz = 14,
+  fw = 500,
+  noIcon
 }) => {
   return (
     <Button
@@ -126,6 +139,7 @@ export const OutlinedIconButton: React.FC<RegularIconButtonProps> = ({
       sx={{
         background: 0,
         backgroundColor: 0,
+        textTransform: 'none',
         border: '1px solid rgba(0, 0, 0, 0.2)',
         boxShadow: 0,
         padding: padding,
@@ -137,6 +151,8 @@ export const OutlinedIconButton: React.FC<RegularIconButtonProps> = ({
         width: width,
         borderRadius: '8px',
         color: 'black',
+        fontSize: fz,
+        fontWeight: fw,
 
         "&:hover": {
           backgroundColor: 0,
@@ -162,7 +178,7 @@ export const OutlinedIconButton: React.FC<RegularIconButtonProps> = ({
           margin: 0,
         },
       }}
-      startIcon={<img src={src} alt="icon" width={iconW} height={iconH} style={{
+      startIcon={!noIcon && <img src={src} alt="icon" width={iconW} height={iconH} style={{
         marginRight: iconMr,
         filter: "invert(0%) brightness(0%)",
       }} />}>
@@ -177,4 +193,3 @@ export const OutlinedIconButton: React.FC<RegularIconButtonProps> = ({
     </Button>
   );
 };
-

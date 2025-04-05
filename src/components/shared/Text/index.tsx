@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from '@mui/material';
+import { TextField, Typography } from '@mui/material';
 
 type TextProps = {
   text?: string,
@@ -8,13 +8,15 @@ type TextProps = {
   textColor?: string,
   textLs?: string,
   textLh?: string
+  padding?: string
 }
 
-export const SubtitleText: React.FC<TextProps> = ({ text, textFz = '14px', textWt = 700 }) =>
+export const SubtitleText: React.FC<TextProps> = ({ text, textFz = '14px', textWt = 700, padding }) =>
   <Typography
     color='rgba(0, 0, 0, 0.8)'
     fontSize={textFz}
     fontWeight={textWt}
+    padding={padding}
   >
     {text}
   </Typography>
@@ -24,9 +26,11 @@ export const RegularText: React.FC<TextProps> = ({
   textFz = '14px',
   textWt = 400,
   textLs = '0.3px',
-  textLh = '24px'
+  textLh = '24px',
+  padding = 'initial'
 }) =>
   <Typography
+    padding={padding}
     color='rgba(0, 0, 0, 0.8)'
     fontSize={textFz}
     fontWeight={textWt}
@@ -88,3 +92,36 @@ export const ButtonText: React.FC<TextProps> = ({
     {text}
   </Typography>
 
+type InputProps = {
+  text?: string,
+  textFz?: string,
+  textWt?: number,
+  textColor?: string,
+  textLs?: string,
+  textLh?: string
+  padding?: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement>,
+}
+
+export const EditInput: React.FC<InputProps> = ({
+  text,
+  onChange
+}) =>
+  <TextField
+    value={text}
+    onChange={onChange}
+    fullWidth
+    variant="outlined"
+    size="small"
+    sx={{
+      '& fieldset': {
+        border: '1px solid rgba(0, 0, 0, 0.2);',
+      },
+      '&:hover fieldset': {
+        border: '1px solid rgba(0, 0, 0, 0.5)',
+      },
+      '&.Mui-focused fieldset': {
+        border: 'border: 2px solid #35CDFD;',
+      },
+    }}
+  />

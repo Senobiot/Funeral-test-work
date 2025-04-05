@@ -10,8 +10,6 @@ const AppLayout: React.FC = () => (
       width='100vw'
       display='flex'
       flexDirection='column'
-      // justifyContent='center'
-      // alignContent='center'
       alignItems='center'
     >
       <AppViews />
