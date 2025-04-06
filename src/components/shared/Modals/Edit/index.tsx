@@ -42,14 +42,18 @@ const EditModal: React.FC<ModalProps> = ({ open, onClose, initialName, onSave })
           variant="outlined"
           sx={{
             marginTop: 1,
-            '& fieldset': {
-              border: '1px solid rgba(0, 0, 0, 0.2);',
-            },
-            '&:hover fieldset': {
-              border: '1px solid rgba(0, 0, 0, 0.5)',
-            },
-            '&.Mui-focused fieldset': {
-              border: 'border: 2px solid #35CDFD;',
+            '& .MuiOutlinedInput-root': {
+              '& input': {
+                outline: 'none',
+                border: 'none',
+              },
+              '&:hover fieldset': {
+                borderColor: 'rgba(0, 0, 0, 0.5)',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: '#35CDFD',
+                borderWidth: '2px',
+              },
             },
           }}
         />

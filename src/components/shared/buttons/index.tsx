@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { Box } from '@mui/material';
 
+
 type IconButtonProps = {
   src?: string,
   text?: string,
@@ -29,6 +30,10 @@ export const MenuIconButton: React.FC<IconButtonProps> = ({ src = '', text, icon
         "&:hover": {
           backgroundColor: bg,
           boxShadow: "none",
+        },
+        "&:focus": {
+          boxShadow: "none",
+          outline: 'none'
         },
 
         "& .MuiButton-startIcon": {
