@@ -24,6 +24,18 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ title, id }) => {
     await deleteCompany(id);
   }
 
+  const activeBtsStyles = {
+    '&:focus': {
+      outline: 'none',
+    },
+    '&:hover': {
+      backgroundColor: "rgba(59,59,59,0.05)",
+    },
+    "&:active": {
+      backgroundColor: "rgba(153,129,255,0.2)",
+    },
+  }
+
   return (
     <Box
       position='fixed'
@@ -39,7 +51,10 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ title, id }) => {
     >
       <IconButton sx={{
         position: 'absolute',
-        left: -38
+        left: -38,
+        width: 32,
+        height: 32,
+        ...activeBtsStyles
       }}>
         <img src="/Icon.svg" alt="edit" style={{
         }} />
@@ -49,14 +64,18 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ title, id }) => {
       </Typography>
       <Box display='flex'>
         <Box>
-          <IconButton onClick={() => setIsEditing(true)}>
+          <IconButton
+            sx={activeBtsStyles}
+            onClick={() => setIsEditing(true)}>
             <img src="/Edit.svg" alt="edit" style={{
               filter: "invert(0%) brightness(0%)",
             }} />
           </IconButton>
         </Box>
         <Box onClick={() => setIsDeleting(true)}>
-          <IconButton>
+          <IconButton
+            sx={activeBtsStyles}
+          >
             <img src="/Trash.svg" alt="delete" style={{
               filter: "brightness(0) saturate(100%) invert(20%) sepia(83%) saturate(5741%) hue-rotate(0deg) brightness(100%) contrast(106%)",
             }} />

@@ -102,7 +102,9 @@ export const RegularIconButton: React.FC<RegularIconButtonProps> = ({
           filter: 'drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.12))',
           boxShadow: "none",
         },
-
+        '&:focus': {
+          outline: 'none',
+        },
         "& .MuiButton-startIcon": {
           margin: 0,
         },
@@ -162,9 +164,9 @@ export const OutlinedIconButton: React.FC<RegularIconButtonProps> = ({
         },
 
         "&:active": {
-          backgroundColor: 0,
+          background: "white",
           boxShadow: "none",
-          border: '#6243E6',
+          borderColor: '#6243E6',
           color: '#6243E6',
         },
 
@@ -193,3 +195,5 @@ export const OutlinedIconButton: React.FC<RegularIconButtonProps> = ({
     </Button>
   );
 };
+
+

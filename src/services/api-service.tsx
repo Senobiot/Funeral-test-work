@@ -15,7 +15,7 @@ export const fetchAuth = async (username: string): Promise<string> => {
   }
   const token = response.headers.get("Authorization")?.replace("Bearer ", "");
   if (token) {
-    localStorage.setItem("token", token); // Сохраняем токен
+    localStorage.setItem("token", token);
   }
   return token || "";
 };
@@ -60,7 +60,7 @@ export const uploadCompanyImage = async (companyId: string, file: File) => {
   const response = await fetch(`${API_URL}companies/${companyId}/image`, {
     method: "POST",
     headers: {
-      Authorization: getAuthHeaders().Authorization, // Только токен
+      Authorization: getAuthHeaders().Authorization,
     },
     body: formData,
   });
@@ -106,13 +106,9 @@ export const updateContact = async (contactId: string, updatedData: object) => {
 export const initialLoad = async () => {
   try {
     const cId = '12';
-    // const storedItem = localStorage.getItem('companies');
-
-    // if (!storedItem) {
     const company = await fetchCompany(cId);
     localStorage.setItem('companies', JSON.stringify(company));
     return company;
-    // }
   } catch (error) {
     console.error("API Error:", error);
   }
