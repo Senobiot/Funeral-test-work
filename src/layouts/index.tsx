@@ -1,12 +1,13 @@
-import { Box } from '@mui/material';
-import React from 'react';
-import Sidebar from '../components/layout-components/SideNavManu';
-import AppViews from '../views';
+import { Box } from '@mui/material'
+import React from 'react'
+import Sidebar from '../components/layout-components/SideNavManu'
+import AppViews from '../views'
 
 const AppLayout: React.FC = () => (
   <Box>
     <Sidebar />
-    <Box pl={40}
+    <Box
+      pl={40}
       width='100vw'
       display='flex'
       flexDirection='column'
@@ -15,6 +16,6 @@ const AppLayout: React.FC = () => (
       <AppViews />
     </Box>
   </Box>
-);
+)
 
-export default AppLayout;
+export default AppLayout

@@ -1,24 +1,22 @@
-import React from 'react';
-import { Box, Modal } from '@mui/material';
-import { OutlinedIconButton, RegularIconButton } from '../../buttons';
-import { SubtitleText, RegularText } from '../../Text';
+import React from 'react'
+import { Box, Modal } from '@mui/material'
+import { OutlinedIconButton, RegularIconButton } from '../../buttons'
+import { SubtitleText, RegularText } from '../../Text'
 
 interface ModalProps {
-  open: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
+  open: boolean
+  onClose: () => void
+  onConfirm: () => void
 }
 
 const RemoveModal: React.FC<ModalProps> = ({ open, onClose, onConfirm }) => {
   const handleDelete = () => {
-    onConfirm();
-    onClose();
+    onConfirm()
+    onClose()
   }
 
   return (
-    <Modal open={open}
-      onClose={onClose}
-    >
+    <Modal open={open} onClose={onClose}>
       <Box
         sx={{
           position: 'absolute',
@@ -34,9 +32,13 @@ const RemoveModal: React.FC<ModalProps> = ({ open, onClose, onConfirm }) => {
           borderRadius: '8px',
         }}
       >
-        <SubtitleText text='Remove the Organization?' textFz='16px' textWt={700} />
+        <SubtitleText
+          text='Remove the Organization?'
+          textFz='16px'
+          textWt={700}
+        />
         <RegularText text='Are you sure you want to remove this Organozation?' />
-        <Box mt={2} display="flex" justifyContent="space-between">
+        <Box mt={2} display='flex' justifyContent='space-between'>
           <Box onClick={onClose}>
             <OutlinedIconButton text='No' noIcon={true} width='148px' />
           </Box>
@@ -46,7 +48,7 @@ const RemoveModal: React.FC<ModalProps> = ({ open, onClose, onConfirm }) => {
         </Box>
       </Box>
     </Modal>
-  );
-};
+  )
+}
 
-export default RemoveModal;
+export default RemoveModal

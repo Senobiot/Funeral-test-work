@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
-import { Box, Modal, TextField } from '@mui/material';
-import { OutlinedIconButton, RegularIconButton } from '../../buttons';
-import { SubtitleText } from '../../Text';
+import React, { useState } from 'react'
+import { Box, Modal, TextField } from '@mui/material'
+import { OutlinedIconButton, RegularIconButton } from '../../buttons'
+import { SubtitleText } from '../../Text'
 
 interface ModalProps {
-  open: boolean;
-  onClose: () => void;
-  initialName: string;
-  onSave: (newName: string) => void;
+  open: boolean
+  onClose: () => void
+  initialName: string
+  onSave: (newName: string) => void
 }
 
-const EditModal: React.FC<ModalProps> = ({ open, onClose, initialName, onSave }) => {
-  const [organizationName, setOrganizationName] = useState(initialName);
+const EditModal: React.FC<ModalProps> = ({
+  open,
+  onClose,
+  initialName,
+  onSave,
+}) => {
+  const [organizationName, setOrganizationName] = useState(initialName)
   const handleSave = () => {
-    onSave(organizationName);
-    onClose();
+    onSave(organizationName)
+    onClose()
   }
 
   return (
@@ -34,12 +39,16 @@ const EditModal: React.FC<ModalProps> = ({ open, onClose, initialName, onSave })
           borderRadius: '8px',
         }}
       >
-        <SubtitleText text="Specify the Organization's name" textFz='16px' textWt={700} />
+        <SubtitleText
+          text="Specify the Organization's name"
+          textFz='16px'
+          textWt={700}
+        />
         <TextField
           fullWidth
           value={organizationName}
           onChange={(e) => setOrganizationName(e.target.value)}
-          variant="outlined"
+          variant='outlined'
           sx={{
             marginTop: 1,
             '& .MuiOutlinedInput-root': {
@@ -57,17 +66,24 @@ const EditModal: React.FC<ModalProps> = ({ open, onClose, initialName, onSave })
             },
           }}
         />
-        <Box mt={2} display="flex" justifyContent="space-between">
+        <Box mt={2} display='flex' justifyContent='space-between'>
           <Box onClick={onClose}>
             <OutlinedIconButton text='Cancel' noIcon={true} width='148px' />
           </Box>
           <Box onClick={handleSave}>
-            <RegularIconButton text='Save changes' noIcon={true} width='148px' pL={1} pR={1} height={40} />
+            <RegularIconButton
+              text='Save changes'
+              noIcon={true}
+              width='148px'
+              pL={1}
+              pR={1}
+              height={40}
+            />
           </Box>
         </Box>
       </Box>
     </Modal>
-  );
-};
+  )
+}
 
-export default EditModal;
+export default EditModal

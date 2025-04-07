@@ -1,11 +1,11 @@
 type navTreeProps = {
-  key: string;
-  path: string;
-  title: string;
-  breadcrumb: boolean;
-  isActive?: boolean;
-  src: string;
-};
+  key: string
+  path: string
+  title: string
+  breadcrumb: boolean
+  isActive?: boolean
+  src: string
+}
 
 export const navTree: Array<navTreeProps> = [
   {
@@ -30,4 +30,4 @@ export const navTree: Array<navTreeProps> = [
     breadcrumb: false,
     src: '/Account.svg',
   },
-];
+]

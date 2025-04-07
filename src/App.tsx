@@ -1,46 +1,26 @@
-import React, { useEffect } from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import { BrowserRouter, Route, Routes } from 'react-router';
-import AppLayout from './layouts';
-import { fetchAuth, initialLoad } from './services/api-service';
-
-const theme = createTheme({
-  typography: {
-    fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif',
-  },
-  components: {
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          margin: 0,
-        },
-      },
-    },
-    MuiButtonBase: {
-      defaultProps: {
-        disableRipple: true,
-      },
-    },
-  },
-});
+import React, { useEffect } from 'react'
+import { ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import { BrowserRouter, Route, Routes } from 'react-router'
+import AppLayout from './layouts'
+import { fetchAuth } from './services/api-service'
+import { customTheme } from './themes'
 
 const App: React.FC = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        await fetchAuth("senobiot");
-        await initialLoad();
+        await fetchAuth('senobiot')
       } catch (error) {
-        console.error("API Error:", error);
+        console.error('API Error:', error)
       }
-    };
+    }
 
-    loadData();
-  }, []);
+    loadData()
+  }, [])
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={customTheme}>
       <CssBaseline />
       <BrowserRouter>
         <Routes>
@@ -48,7 +28,7 @@ const App: React.FC = () => {
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
